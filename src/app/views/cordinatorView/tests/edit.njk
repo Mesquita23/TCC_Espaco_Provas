@@ -1,0 +1,35 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+
+<section class="container form">
+    <form method="POST" action="/tests?_method=PUT">
+       
+            <div class="header">
+                <h3>Editar a prova</h3>
+            </div>
+
+            <div class="fields">
+                {% include 'cordinatorView/tests/fields.njk'%}
+                <input type="hidden", name="id" value={{test.id}}>
+            </div>
+
+            
+                <button class="button edit" type="submit">Editar</button>
+        </form>
+        <form id="form-delete" action="/tests?_method=DELETE" method="post">
+            <input type="hidden" name="id" value="{{test.id}}">
+            <button class="button delete"  type="submit">Deletar</button>
+        </form>
+</section>
+<script>
+const formDelete = document.querySelector("#form-delete")
+formDelete.addEventListener("submit", function (event) {
+    const confirmation = confirm("Deseja Deletar?")
+    if (!confirmation) {
+        event.prevenDefault()
+    }
+})
+</script>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "admView/layout.njk" %}
+
+{% block content %}
+
+    <div class="card container table-container">
+        <div class="header">
+            <a class="button" href="cordinators/create">Novo</a>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Cordenador</th>
+                    <th>Email</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cordinator in cordinators %}
+                    <tr>
+                        <td>{{cordinator.name}}</td>
+                        <td>{{cordinator.email}}</td>
+                        <td>
+                            <form id="form-delete" action="/cordinators?_method=DELETE" method="post">
+                                <input type="hidden" name="id" value="{{cordinators.id}}">
+                                <button class="button delete"  type="submit">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

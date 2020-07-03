@@ -1,0 +1,63 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+    <section class="container form">
+        <form action="">
+            <div class="header">
+                <h3>Visualisar questão</h3>
+            </div>
+            <input type="hidden" name="id_test" value="{{id_test}}">
+
+            <div class="item">
+                <div>Nome da Prova/Simulado</div>
+                <div>
+                    {{question.question}}
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Pontuação da questão</div>
+                <div>
+                    {{question.punctuation}}
+                </div>
+            </div>
+            <div class="item">
+                <div>Escolha a matéria desta questão</div>
+                {{matter.name}}
+            </div>
+
+            <div class="item">
+                <div>Escolha a alternativa correta</div>
+                {{alternativecorrect.alternative}}
+            </div>
+            <input type="hidden" name="id" value={{id_test}}>
+        </div>
+        <a class="button " href="../../../../../cordinator/tests/{{id_test}}/questions/{{question.id}}/edit">Editar</a>
+    </form>
+    {# ------------------------------- Alternativas ----------------------------- #}
+    <div class="card container table-container">
+        <div class="header">
+            <a class="button" href="{{question.id}}/alternatives/create">Nova Alternativa
+            </a>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Alternativa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alternative in alternatives %}
+                    <tr>
+                        <td>{{alternative.alternative}}</td>
+                        <td>
+                            <a href="../../../../cordinator/tests/{{id_test}}/questions/{{question.id}}/alternatives/{{alternative.id}}/edit">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock content %}

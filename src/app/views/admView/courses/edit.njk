@@ -1,0 +1,33 @@
+{% extends "admView/layout.njk" %}
+
+{% block content %}
+
+<section class="container form">
+    <form method="POST" action="/courses?_method=PUT">
+       
+            <div class="header">
+                <h3>Editar Curso</h3>
+            </div>
+
+            <div class="fields">
+                {% include 'admView/courses/fields.njk'%}
+            </div>
+            
+                <button class="button edit" type="submit">Editar</button>
+        </form>
+        <form id="form-delete" action="/courses?_method=DELETE" method="post">
+            <input type="hidden" name="id" value="{{courses.id}}">
+            <button class="button delete"  type="submit">Deletar</button>
+        </form>
+</section>
+<script>
+const formDelete = document.querySelector("#form-delete")
+formDelete.addEventListener("submit", function (event) {
+    const confirmation = confirm("Deseja Deletar?")
+    if (!confirmation) {
+        event.prevenDefault()
+    }
+})
+</script>
+
+{% endblock content %}

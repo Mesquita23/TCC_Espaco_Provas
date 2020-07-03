@@ -1,0 +1,30 @@
+{% extends "admView/layout.njk" %}
+
+{% block content %}
+
+    <div class="card container table-container">
+        <div class="header">
+            <a class="button" href="courses/create">Novo</a>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Nome Cordenador</th>
+                    <th>AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{course.name}}</td>
+                        <td>{{course.cordinator}}</td>
+                        <td>
+                            <a href="courses/{{course.id}}/edit">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

@@ -1,0 +1,111 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+    <section class="container form">
+        <form action="">
+            <div class="header">
+                <h3>Visualisar Prova</h3>
+            </div>
+
+            <div class="fields">
+                <div class="item">
+                    <div>Nome da Prova/Simulado</div>
+                    <div>
+                        {{test.name}}
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Descrição</div>
+                    <div>
+                        {{test.description}}
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Pontuação total da Prova/Simulado</div>
+                    <div>
+                        {{punctuation}}
+                    </div>
+                </div>
+
+                {% if (test.status == '1') 
+                    or(test.status == '0')or(1 == 1) %}
+                    <div class="item">
+                        <div>Prova ou Simulado</div>
+                        <div>
+                            {% if test.typetest == '0' %}
+                                Prova
+                            {% else %}
+                                Simulado
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if(1 == 1)%}
+
+                    <div class="item">
+                        <div>Data inicio da prova (data em que os alunos poderam começar a realizar a prova)</div>
+                        <div>
+                            {{test.datestart}}
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>Data fim da prova (data em que os alunos poderam começar a realizar a prova)</div>
+                        <div>
+                            {{test.dateend}}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="item">
+                    <div>Ativo para alunos</div>
+                    <div>
+                        {% if test.status == '0' %}
+                            Desativado
+                        {% elseif test.status == '1' %}
+                            Ativado
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            <input type="hidden" name="id" value={{test.id}}>
+        </div>
+        <a class="button " href="../../cordinator/tests/{{test.id}}/edit">Editar</a>
+    </form>
+</section>
+{# ------------------------------- QUESTÕES ----------------------------- #}
+<h3 style="text-align: center;">QUESTÕES</h3>
+<section class="container form2">
+    <div class="card container table-container">
+            <div class="header">
+                <a class="button" href="../../cordinator/tests/{{test.id}}/questions/create">Nova Questão
+                </a>
+            </div>
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>questão</th>
+                        <th>Pontuação</th>
+                        <th>Matéria da questão</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for question in questions %}
+                        <tr>
+                            <td>{{question.question}}</td>
+                            <td>{{question.punctuation}}</td>
+                            <td>{{question.matter}}</td>
+                            <td>
+                                <a href="../../cordinator/tests/{{test.id}}/questions/{{question.id}}">Alternativas</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</section>
+{% endblock content %}

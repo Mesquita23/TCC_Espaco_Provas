@@ -1,0 +1,45 @@
+{% extends "studentView/layout.njk" %}
+
+{% block content %}
+<h3 style="text-align: center; padding: 14px; ">PROVAS E SIMULADOS DISPONÍVEIS</h3>
+
+    <div class="card container table-container">
+        <div class="header">
+            <form action="tests" method="GET">
+                <div class="item">
+                    <div>Filtrar por Ativo</div>
+                    <div>
+                        <select name="typetestfilter">
+                            <option value="" {% if filter == ""%} selected="selected" {% endif %}>TODOS</option>
+                            <option value="1" {% if filter == "1"%} selected="selected" {% endif %}>Provas</option>
+                            <option value="0" {% if filter == "0"%} selected="selected" {% endif %}>Simulados</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Prova ou Simulado</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for test in tests %}
+                    <tr>
+                        <td>{{test.name}}</td>
+                        <td>{{test.description}}</td>
+                        <td>{% if test.typetest == 0 %}Prova{%else%}Simulado{%endif%}</td>
+                        <td>
+                            <a href="../students/tests/{{test.id}}">Realizar prova</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

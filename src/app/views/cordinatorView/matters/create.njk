@@ -1,0 +1,21 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+
+<section class="container form">
+    <form method="POST" action="/matters">
+       
+            <div class="header">
+                <h3>Cadastrar Nova Matéria</h3>
+            </div>
+
+            <div class="fields">
+                {% include 'cordinatorView/matters/fields.njk'%}
+            </div>
+
+            
+                <button class="button" type="submit">Salvar</button>
+        </form>
+</section>
+
+    {% endblock content %}

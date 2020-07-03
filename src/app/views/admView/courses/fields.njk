@@ -1,0 +1,22 @@
+
+
+{%if course %} <input type="hidden"  name="id_course"  value="{{course.id}}" >{% endif %}
+
+<div class="item">
+    <div>Matéria</div>
+    <div>
+        <input type="text" name="name" placeholder="Digite a matéria" value='{{course.name}}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Cordenador</div>
+        <div>
+        <select name="id_cordinator">
+            {% for cordinator in cordinators %}
+                <option value="{{cordinator.id}}" {% if course.id_cordinator == cordinator.id %} selected="selected" {% endif %}>{{cordinator.name}}</option>
+            {% endfor %}
+        </select>
+        </div>
+</div>
+

@@ -1,0 +1,53 @@
+<div class="item">
+    <div>Nome Completo</div>
+    <div class="input">
+        <input type="text" name="name" placeholder="Digite seu nome completo" value='{{student.name}}' required>
+    </div>
+</div>
+
+<div class="item">
+    <div>Email</div>
+    <div class="input">
+        <input  type="email" name="email" placeholder="Digite seu email" value='{{student.email}}' onblur="Validate.apply(this, 'isEmail')">
+    </div>
+</div>
+
+<div class="item">
+    <div>Senha</div>
+    <div class="input">
+        <input type="password" name="password" {%if not student.id%} placeholder="Escolha uma senha segura" {%else%} placeholder="Digite sua senha para atualizar seu cadastro" {%endif%}>
+    </div>
+</div>
+{%if not student.id %}
+<div class="item">
+    <div>Repetir Senha</div>
+    <div class="input">
+        <input type="password" name="passwordRepeat" placeholder="Repita a senha escolida">
+    </div>
+</div>
+{% endif %}
+
+<div class="item">
+    <div>Ra</div>
+    <div class="input">
+        <input  type="text" name="ra" placeholder="Digite seu Ra" value='{{student.ra}}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Semestre</div>
+        <div>
+            <select name="semester" >
+                <option value="1"{% if student.semester == "1"%} selected {% endif %}>1</option>
+                <option value="2"{% if student.semester == "2"%} selected {% endif %}>2</option>
+                <option value="3"{% if student.semester == "3"%} selected {% endif %}>3</option>
+                <option value="4"{% if student.semester == "4"%} selected {% endif %}>4</option>
+                <option value="5"{% if student.semester == "5"%} selected {% endif %}>5</option>
+                <option value="6"{% if student.semester == "6"%} selected {% endif %}>6</option>
+                <option value="7"{% if student.semester == "7"%} selected {% endif %}>7</option>
+                <option value="8"{% if student.semester == "8"%} selected {% endif %}>8</option>
+                <option value="9"{% if student.semester == "9"%} selected {% endif %}>9</option>
+                <option value="10"{% if student.semester == "10"%} selected {% endif %}>10</option>
+            </select>
+        </div>
+</div>

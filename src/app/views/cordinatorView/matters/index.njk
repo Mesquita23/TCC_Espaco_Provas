@@ -1,0 +1,55 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+
+<h3 style="text-align: center; padding: 14px; ">MATÉRIAS</h3>
+
+    <div class="card container table-container">
+        <div class="header">
+            <a class="button" href="matters/create">Novo
+            </a>
+            <form action="matters" method="GET">
+                <div class="item">
+                    <div>Filtrar por semestre</div>
+                    <div>
+                        <select name="semester">
+                            <option value="" {% if filter == ""%} selected="selected" {% endif %}>TODOS</option>
+                            <option value="1" {% if filter == "1"%} selected="selected" {% endif %}>1</option>
+                            <option value="2" {% if filter == "2"%} selected="selected" {% endif %}>2</option>
+                            <option value="3" {% if filter == "3"%} selected="selected" {% endif %}>3</option>
+                            <option value="4" {% if filter == "4"%} selected="selected" {% endif %}>4</option>
+                            <option value="5" {% if filter == "5"%} selected="selected" {% endif %}>5</option>
+                            <option value="6" {% if filter == "6"%} selected="selected" {% endif %}>6</option>
+                            <option value="7" {% if filter == "7"%} selected="selected" {% endif %}>7</option>
+                            <option value="8" {% if filter == "8"%} selected="selected" {% endif %}>8</option>
+                            <option value="9" {% if filter == "9"%} selected="selected" {% endif %}>9</option>
+                            <option value="10" {% if filter == "10"%} selected="selected" {% endif %}>10</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>Semestre</th>
+                    <th>AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for matter in matters %}
+                    <tr>
+                        <td>{{matter.name}}</td>
+                        <td>{{matter.semester}}</td>
+                        <td>
+                            <a href="matters/{{matter.id}}/edit">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

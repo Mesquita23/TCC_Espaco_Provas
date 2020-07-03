@@ -1,0 +1,34 @@
+
+<input type="hidden" name="id_test" value="{{id_test}}">
+
+<div class="item">
+    <div>Questão</div>
+    <div>
+        <textarea name="question" rows="5" cols="100">{{question.question}}</textarea>
+    </div>
+</div>
+
+<div class="item">
+    <div>Pontuação da questão</div>
+    <div>
+        <input type="number" name="punctuation" placeholder="Pontuação desta questão" value='{{question.punctuation}}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Escolha a matéria desta questão</div>
+    <select name="id_matter">
+        {% for matter in matters %}}
+            <option value="{{matter.id}}" {% if question.id_matter == matter.id %} selected="selected" {% endif %}>{{matter.name}}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="item">
+    <div>Escolha a alternativa correta</div>
+    <select name="id_alternativecorrect">
+        {% for alternative in alternatives %}}
+            <option value="{{alternative.id}}" {% if question.id_alternativecorrect == alternative.id %} selected="selected" {% endif %}>{{alternative.alternative}}</option>
+        {% endfor %}
+    </select>
+</div>

@@ -1,0 +1,73 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+
+<h3 style="text-align: center; padding: 12px">RELATÓRIOS</h3>
+
+
+    <div class="card container table-container">
+        <h4>Top 3 provas mais feitas pelos alunos</h4>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Prova</th>
+                    <th>Quantidade de alunos que fizeram</th>
+                    <th>Média das notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Prova Penal 1</td>
+                        <td>85 alunos</td>
+                        <td>67 de 120</td>
+                    </tr>
+                    <tr>
+                        <td>Direito Eleitoral</td>
+                        <td>68 alunos</td>
+                        <td>45 de 90</td>
+                    </tr>
+                    <tr>
+                        <td>Prática Jurídica (Cível)</td>
+                        <td>33 alunos</td>
+                        <td>60 de 85</td>
+                    </tr>
+                    {% for matter in matters %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div class="card container table-container">
+        <h4>Top 3 alunos com mais pontos</h4>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Nota</th>
+                    <th>Semestre</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Rodrigo Alencar</td>
+                        <td>580 pontos</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>Bernardo da Silvia</td>
+                        <td>470 pontos</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Prática Jurídica (Cível)</td>
+                        <td>390 pontos</td>
+                        <td>8</td>
+                    </tr>
+                    {% for matter in matters %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

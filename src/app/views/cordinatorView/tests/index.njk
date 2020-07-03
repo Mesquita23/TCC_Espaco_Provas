@@ -1,0 +1,51 @@
+{% extends "cordinatorView/layout.njk" %}
+
+{% block content %}
+
+<h3 style="text-align: center; padding: 14px; ">PROVAS/SIMULADOS</h3>
+
+    <div class="card container table-container">
+        <div class="header">
+            <a class="button" href="tests/create">Novo
+            </a>
+            <form action="matters" method="GET">
+                <div class="item">
+                    <div>Filtrar por Ativo</div>
+                    <div>
+                        <select name="typetestFilter">
+                            <option value="" {% if filter == ""%} selected="selected" {% endif %}>TODOS</option>
+                            <option value="1" {% if filter == "1"%} selected="selected" {% endif %}>Ativo</option>
+                            <option value="2" {% if filter == "2"%} selected="selected" {% endif %}>Desativo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Pontuação (total)</th>
+                    <th>Prova ou Simulado</th>
+                    <th>Ativado para o Aluno</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for test in tests %}
+                    <tr>
+                        <td>{{test.name}}</td>
+                        <td>{{test.punctuation}}</td>
+                        <td>{% if test.typetest == 0 %}Prova{%else%}Simulado{%endif%}</td>
+                        <td>{% if test.status == 0 %}desativo{%else%}Ativo{%endif%}</td>
+                        <td>
+                            <a href="../cordinator/tests/{{test.id}}">Ver</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

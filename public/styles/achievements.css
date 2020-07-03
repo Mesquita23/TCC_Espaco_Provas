@@ -1,0 +1,33 @@
+/*=== CARDS ===*/   
+.achievements{
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.achievement{
+    background-color: #11b9ab ;
+}
+
+.achievement__image-container img{
+    width: 100%;
+    /* isso signifca que ele tem 100% do tamanho do pai dele*/
+}
+.achievement__content,
+.achievement__info {
+    padding: 24px;
+}
+
+.achievement__info{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+.achievement__price{
+    background-color: var(--color-rocket);
+    filter: brightness(90%);
+    padding: 5px 20px;
+    border-radius: 20px;
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+
+<div class="item">
+    <div>Nome da Prova/Simulado</div>
+    <div>
+        <input type="text" name="name" placeholder="Digite o nome da prova" value='{{test.name}}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Descrição</div>
+    <div>
+        <textarea name="description">{{test.description}}</textarea>
+    </div>
+</div>
+
+{% if (test.status == '1') or (test.status == '0') or (1 == 1) %}
+<div class="item">
+    <div>Prova ou Simulado</div>
+    <div>
+        <span>
+            <input type="radio" name="typetest" value="0" {%  if test.typetest == '0' %} checked="checked" {% endif %}>Prova
+        </span>
+        <!-- checked já vem marcado o q obriga ao usuário a escolher um. -->
+        <span>
+            <input type="radio" name="typetest" value="1" {% if test.typetest == '1' %} checked="checked" {% endif %}>Simulado
+        </span>
+    </div>
+</div>
+{% endif %}
+
+{% if(1 == 1)%}
+
+<div class="item">
+    <div>Data inicio da prova (data em que os alunos poderam começar a realizar a prova)</div>
+    <div>
+        <input type="datetime-local" name="datestart" value='{{test.datestart}}'>
+    </div>
+</div>
+
+<div class="item">
+    <div>Data fim da prova (data em que os alunos poderam começar a realizar a prova)</div>
+    <div>
+        <input type="datetime-local" name="dateend" value='{{test.dateend}}'>
+    </div>
+</div>
+
+{% endif %}
+
+{% if (test.status == '1') or (test.status == '0') or (1 == 1) %}
+<div class="item">
+    <div>Prova está ativa para o aluno</div>
+    <div>
+        <span>
+            <input type="radio" name="status" value="1" {% if test.status == '1' %} checked="checked" {% endif %}>Ativado
+        </span>
+        <span>
+            <input type="radio" name="status" value="0" {%  if test.status == '0' %} checked="checked" {% endif %}>Desativado
+        </span>
+        <!-- checked já vem marcado o q obriga ao usuário a escolher um. -->
+    </div>
+</div>
+{% endif %}

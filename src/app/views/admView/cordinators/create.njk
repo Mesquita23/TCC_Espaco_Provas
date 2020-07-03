@@ -1,0 +1,21 @@
+{% extends "admView/layout.njk" %}
+
+{% block content %}
+
+<section class="container form">
+    <form method="POST" action="/courses">
+       
+            <div class="header">
+                <h3>Cadastrar Novo Curso</h3>
+            </div>
+
+            <div class="fields">
+                {% include 'admView/courses/fields.njk'%}
+            </div>
+
+            
+                <button class="button" type="submit">Salvar</button>
+        </form>
+</section>
+
+    {% endblock content %}

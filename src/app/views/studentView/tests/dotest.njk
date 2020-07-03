@@ -1,0 +1,89 @@
+{% extends "studentView/layout.njk" %}
+
+{% block content %}
+    <section class="container form">
+        <form action="">
+            <div class="header">
+                <h3>Prova</h3>
+            </div>
+
+            <div class="fields">
+                <div class="item">
+                    <div>Nome da Prova/Simulado</div>
+                    <div>
+                        {{test.name}}
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Descrição</div>
+                    <div>
+                        {{test.description}}
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Pontuação total da Prova/Simulado</div>
+                    <div>
+                        {{test.punctuation}}
+                    </div>
+                </div>
+
+                {% if (test.status == '1') 
+                    or(test.status == '0')or(1 == 1) %}
+                    <div class="item">
+                        <div>Prova ou Simulado</div>
+                        <div>
+                            {% if test.typetest == '0' %}
+                                Prova
+                            {% else %}
+                                Simulado
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if(1 == 1)%}
+
+                    <div class="item">
+                        <div>Data inicio da prova (data em que os alunos poderam começar a realizar a prova)</div>
+                        <div>
+                            {{test.datestart}}
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div>Data fim da prova (data em que os alunos poderam começar a realizar a prova)</div>
+                        <div>
+                            {{test.dateend}}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <input type="hidden" name="id" value={{test.id}}>
+            </div>
+            <a class="button " href="../../cordinator/tests/{{test.id}}/edit">Começar {% if test.typetest == '0' %} Prova {% else %} Simulado</a> {% endif %}</a>
+        </form>
+    </section>
+    {# ------------------------------- QUESTÕES ----------------------------- #}
+    <section class="container form" >
+        <h2>Questões</h2>
+        <form method="POST" action="/studentstests">
+            <input type="hidden" name="id_test" value={{test.id}}>
+            {% for question in questions %}
+                <div style="padding: 16px 4px">{{question.question}}</div>
+                <div>Alternativas:</div>
+                {% for alternative in alternatives %}
+                    {% if question.id == alternative.id_question %}
+                        <input type="radio" name="{{number}}) {{question.id}}" value="{{alternative.id}}">
+                        <label for="{{alternative.id}}">{{alternative.alternative}}</label><br>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        <button class="button " type="submit">Enviar Prova </button>
+        </form>
+        
+    </section>
+
+
+{% endblock content %}

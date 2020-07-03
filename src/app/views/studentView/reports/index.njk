@@ -1,0 +1,64 @@
+{% extends "studentView/layout.njk" %}
+
+{% block content %}
+
+<h3 style="text-align: center; padding: 12px">RELATÓRIOS</h3>
+
+
+    <div class="card container table-container">
+        <h4>melhores provas</h4>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Prova</th>
+                    <th>Pontuação</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Direito Internacional Público</td>
+                        <td>95 de 100</td>
+                    </tr>
+                    <tr>
+                        <td>Ética do Profissional Jurídico</td>
+                        <td>80 de 100</td>
+                    </tr>
+                    <tr>
+                        <td>Prática Jurídica (Trabalhista)</td>
+                        <td>75 de 100</td>
+                    </tr>
+                    {% for matter in matters %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    
+    <div class="card container table-container">
+        <h4>Matérias que tem mais acertividade em provas</h4>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>ACERTIVIDADE</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Direito Internacional Público</td>
+                        <td>90% de acertividade</td>
+                    </tr>
+                    <tr>
+                        <td>Prática Jurídica (Administrativo)</td>
+                        <td>78% de acertividade</td>
+                    </tr>
+                    <tr>
+                        <td>Prática Jurídica (Cível)</td>
+                        <td>70% de acertividade</td>
+                    </tr>
+                    {% for matter in matters %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
